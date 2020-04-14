@@ -1,7 +1,9 @@
 return Def.ActorFrame{
-	InitCommand=function(self)
+	OnCommand=function(self)
+		ChangeGame()
+		ChangeLanguage()
 	end;
-	LoadActor("warning")..{
+	LoadActor(ddrgame.."bg")..{
 		InitCommand=cmd(Center);
 	};
 }

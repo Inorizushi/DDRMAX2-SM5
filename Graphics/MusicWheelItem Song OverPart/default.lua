@@ -5,7 +5,8 @@ local indexes = {0,1, 2, 3, 4, 5, 6, 7, 8, 9,10};
 
 for i = 1,11 do
 t[#t+1] = Def.ActorFrame{
-  LoadActor("../_witem over")..{
+  Def.Sprite{
+    Texture=THEME:GetPathG("",""..ddrgame.."witem over"),
     SetMessageCommand=function(self,params)
       local index = params.DrawIndex
       if index then

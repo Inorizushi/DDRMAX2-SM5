@@ -26,7 +26,7 @@ local t = Def.ActorFrame{
 	-- Picture
 	Def.ActorFrame{
 		InitCommand=cmd(x,SCREEN_CENTER_X-150;y,SCREEN_CENTER_Y+132);
-		LoadActor("dancer"..masterPlayer)..{
+		LoadActor(ddrgame.."dancer"..masterPlayer)..{
 			BeginCommand=cmd(playcommand,"CheckNumPlayers");
 			OnCommand=function(s) s:valign(1):diffusealpha(0):sleep(0.3):sleep(0.833):linear(0.030):diffusealpha(0.0625):x(-30):linear(0.028):diffusealpha(0.125)
 				:x(30):linear(0.028):diffusealpha(0.1875):x(-25):linear(0.028):diffusealpha(0.25):x(25):linear(0.028):diffusealpha(0.3125)

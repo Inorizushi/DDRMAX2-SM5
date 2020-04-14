@@ -4,7 +4,7 @@ local yPosPlayer = { [PLAYER_1] = (SCREEN_TOP+68),[PLAYER_2] = (SCREEN_TOP+95) }
 
 local spn = ToEnumShortString(pn)
 
-t[#t+1] = LoadActor( spn.."badge")..{
+t[#t+1] = LoadActor( ddrgame..spn.."badge")..{
 	InitCommand=function(self)
 		self:x(SCREEN_CENTER_X-310)
 		:y(yPosPlayer[pn])

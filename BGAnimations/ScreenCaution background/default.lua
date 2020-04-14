@@ -1,6 +1,6 @@
 return Def.ActorFrame{
 	Def.Sprite{
-		Texture=lang.."centered",
+		Texture=ddrgame..lang.."centered",
 		InitCommand=function(s) s:xy(SCREEN_CENTER_X,SCREEN_CENTER_Y) end
 	},
 	Def.Actor{

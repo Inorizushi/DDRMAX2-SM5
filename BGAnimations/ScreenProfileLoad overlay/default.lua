@@ -63,7 +63,7 @@ t[#t+1] = Def.ActorFrame{
 		:queuecommand("Bounce")
 	end,
 	Def.Sprite{
-		Texture="../_moveon",
+		Texture=THEME:GetPathB("",""..ddrgame.."moveon"),
 		ActionCommand=function(s) s:sleep(0.110):queuecommand("Bounce") end,
 		CardLoadedCommand=function(s) s:stoptweening():decelerate(0.1):zoom(1) end,
 		BounceCommand=function(s)

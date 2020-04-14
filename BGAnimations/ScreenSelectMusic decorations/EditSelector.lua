@@ -38,7 +38,7 @@ local function LoadEditItems()
 	-- Default. Acts as original gateway.
 	local wheelitem = Def.ActorFrame{
 		Def.ActorFrame{
-			Def.Sprite{ Texture=THEME:GetPathG("MusicWheelItem Song","NormalPart/backer") },
+			Def.Sprite{ Texture=THEME:GetPathG("MusicWheelItem Song","NormalPart/"..ddrgame.."backer") },
 			Def.BitmapText{ Font="_2070polyester round", Text="OFFICIAL STEP",
 				OnCommand=function(s) s:diffuse(Color.Blue):strokecolor(Color.Black):xy(-3,-3) end
 			},
@@ -78,7 +78,7 @@ local function LoadEditItems()
 
 	for v in ivalues(editdata) do
 		wheelitem[#wheelitem+1] = Def.ActorFrame{
-			Def.Sprite{ Texture=THEME:GetPathG("MusicWheelItem Song","NormalPart/backer") },
+			Def.Sprite{ Texture=THEME:GetPathG("MusicWheelItem Song","NormalPart/"..ddrgame.."backer") },
 			Def.BitmapText{
 				Font="_2070polyester round",
 				-- Limit edit text to AC's 9 character format.
@@ -91,7 +91,7 @@ local function LoadEditItems()
 	-- Filler items, these cover the surroundings.
 	for i=1,10-#editdata do
 		wheelitem[#wheelitem+1] = Def.ActorFrame{
-			Def.Sprite{ Texture=THEME:GetPathG("MusicWheelItem Song","NormalPart/backer") },
+			Def.Sprite{ Texture=THEME:GetPathG("MusicWheelItem Song","NormalPart/"..ddrgame.."backer") },
 			Def.BitmapText{ Font="_2070polyester round", Text="- NO DATA. -",
 				OnCommand=function(s) s:strokecolor(Color.Black):diffuse(color("#777777")):xy(-3,-3) end
 			},

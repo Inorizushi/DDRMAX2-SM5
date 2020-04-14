@@ -1,12 +1,12 @@
 local t = Def.ActorFrame {
-	LoadActor(THEME:GetPathG("","_sort/_Preferred.png"));
+	LoadActor(THEME:GetPathG("","_sort/"..ddrgame.."/_Preferred.png"));
 	Def.Sprite{
 		BeginCommand=cmd(playcommand,"SetGraphic");
 		SetGraphicCommand=function(self)
 			local so = GAMESTATE:GetSortOrder();
 			if so ~= nil then
 				local sort = ToEnumShortString(so)
-				self:Load(THEME:GetPathG("","_sort/_"..sort));
+				self:Load(THEME:GetPathG("","_sort/"..ddrgame.."/_"..sort));
 			end;
 		end;
 		SortOrderChangedMessageCommand=function(self)
@@ -17,7 +17,7 @@ local t = Def.ActorFrame {
 				:queuecommand("SetGraphic")
 				:sleep(0.2)
 				:decelerate(0.18)
-				:cropbottom(0)
+				:cropbottom(0.15)
 				:addy(-30)
 			end
 		end;

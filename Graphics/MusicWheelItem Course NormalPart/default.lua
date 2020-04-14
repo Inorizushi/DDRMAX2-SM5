@@ -1,5 +1,5 @@
 local t = Def.ActorFrame{
-  Def.Sprite{Texture=THEME:GetPathG("","MusicWheelItem Song NormalPart/backer"),};
+  Def.Sprite{ Texture=THEME:GetPathG("MusicWheelItem Song","NormalPart/"..ddrgame.."backer") },
   Def.Sprite{
     SetMessageCommand=function(self, param)
       self:x(-26)

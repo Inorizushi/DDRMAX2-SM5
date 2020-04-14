@@ -1,0 +1,1 @@
+return Def.Sprite{Texture=THEME:GetPathG("ScreenWithMenuElements","footer/"..ddrgame),};

@@ -3,7 +3,7 @@ local t = Def.ActorFrame{};
 if GAMESTATE:GetCoinMode() == 'CoinMode_Home' then
 t[#t+1] = Def.ActorFrame{
 	
-	LoadActor(THEME:GetPathB("","/ScreenLogo background/bg"))..{
+	LoadActor(THEME:GetPathB("","/ScreenLogo background/"..ddrgame.."bg"))..{
 		InitCommand=cmd(Center);
 	};
 	Def.Quad{

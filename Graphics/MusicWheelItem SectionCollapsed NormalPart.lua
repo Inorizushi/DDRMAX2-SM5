@@ -71,7 +71,7 @@ local t = Def.ActorFrame{
     end;
   };
   Def.Sprite{
-    Texture="MusicWheelItem Song NormalPart/WheelNotifyIcon icons 4x2";
+    Texture="MusicWheelItem Song NormalPart/"..ddrgame.."WheelNotifyIcon icons 4x2";
     InitCommand=function(s) s:animate(0):x(-154) end,
     SetMessageCommand=function(s,p)
       s:visible(false)

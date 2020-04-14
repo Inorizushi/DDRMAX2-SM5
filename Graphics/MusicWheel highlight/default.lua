@@ -1,11 +1,11 @@
 local t = Def.ActorFrame{
-  LoadActor("hl")..{
+  LoadActor(ddrgame.."hl")..{
     OnCommand=cmd(cropbottom,0.1;diffuseshift;blend,Blend.Add;;effectcolor1,0.2,0.33,0,1;effectcolor2,0.2,0.33,0,0;effectperiod,1.085);
   };
 };
 
 t[#t+1] = Def.ActorFrame{
-  LoadActor("frame")..{
+  LoadActor(ddrgame.."frame")..{
     InitCommand=function(self)
       if GAMESTATE:IsPlayerEnabled(PLAYER_1) ~= true or PROFILEMAN:IsPersistentProfile(PLAYER_1) == false then
         self:croptop(0.27)

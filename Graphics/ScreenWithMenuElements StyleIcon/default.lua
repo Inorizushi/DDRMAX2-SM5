@@ -10,7 +10,7 @@ if style then
 		state = master_pn == PLAYER_2 and 1 or 0
 	end;
 
-	return LoadActor(THEME:GetPathG("ScreenWithMenuElements","StyleIcon/"..st))..{
+	return LoadActor(THEME:GetPathG("ScreenWithMenuElements","StyleIcon/"..ddrgame..st))..{
 		InitCommand=cmd(animate,false;setstate,state);
 	};
 else

@@ -196,4 +196,47 @@ t[#t+1] = Def.Actor{
 	end,
 };
 
+if ddrgame == "max_" then
+	t[#t+1] = Def.Sprite{
+		Texture=THEME:GetPathB("ScreenWithMenuElements","background/max_bg"),
+		InitCommand=function(s) s:Center():cropbottom(0.895)end,
+	};
+
+	t[#t+1] = Def.ActorFrame{
+		Def.ActorFrame{
+			InitCommand=function(s) s:xy(_screen.cx,_screen.cy-215):sleep(1.22) end,
+			LoadActor( THEME:GetPathG("ScreenWithMenuElements","header/max_/h1") )..{
+				InitCommand=function(s) s:x(208) end,
+			};
+			LoadActor( THEME:GetPathG("ScreenWithMenuElements","header/max_/h1") )..{
+				OnCommand=cmd(x,104;horizalign,left;sleep,0.264;accelerate,0.2;x,-310;linear,0.066;zoomx,1.5;linear,0.066;zoomx,1;linear,0.066;zoomx,1.3;linear,0.066;zoomx,1;linear,0.066;zoomx,1.1;linear,0.066;zoomx,1);
+				OffCommand=cmd(x,-310;horizalign,left;sleep,0.396;sleep,0.02;accelerate,0.2;x,104;linear,0.066;zoomx,1.5;linear,0.066;zoomx,1;linear,0.066;zoomx,1.3;linear,0.066;zoomx,1;linear,0.066;zoomx,1.1;linear,0.066;zoomx,1);
+			};
+		
+			LoadActor( THEME:GetPathG("ScreenWithMenuElements","header/max_/h1") )..{
+				OnCommand=cmd(x,128;horizalign,left;sleep,0.264;sleep,0.02;accelerate,0.2;x,-286;linear,0.066;zoomx,1.5;linear,0.066;zoomx,1;linear,0.066;zoomx,1.3;linear,0.066;zoomx,1;linear,0.066;zoomx,1.1;linear,0.066;zoomx,1);
+				OffCommand=cmd(x,-286;horizalign,left;sleep,0.396;sleep,0.01;accelerate,0.2;x,128;linear,0.066;zoomx,1.5;linear,0.066;zoomx,1;linear,0.066;zoomx,1.3;linear,0.066;zoomx,1;linear,0.066;zoomx,1.1;linear,0.066;zoomx,1);
+			};
+		
+			LoadActor( THEME:GetPathG("ScreenWithMenuElements","header/max_/h1") )..{
+				OnCommand=cmd(x,152;horizalign,left);
+				OffCommand=cmd(x,152;horizalign,left;sleep,0.396;sleep,0.2;linear,0.066;zoomx,1.5;linear,0.066;zoomx,1;linear,0.066;zoomx,1.3;linear,0.066;zoomx,1;linear,0.066;zoomx,1.1;linear,0.066;zoomx,1);
+			};
+		
+			LoadActor( THEME:GetPathG("ScreenWithMenuElements","header/max_/h2") )..{
+				OnCommand=cmd(x,160;horizalign,left;cropright,1;sleep,0.264;sleep,0.04;accelerate,0.2;x,-262;cropright,0);
+				OffCommand=cmd(x,-262;horizalign,left;cropright,0;sleep,0.396;accelerate,0.2;x,160;cropright,1);
+			};
+		
+			LoadActor( THEME:GetPathG("ScreenWithMenuElements","header/max_/h1") )..{
+				OnCommand=cmd(x,176;horizalign,left);
+			};
+			LoadActor( THEME:GetPathG("ScreenWithMenuElements","header/max_/music") )..{
+				OnCommand=cmd(x,160;horizalign,left;cropright,1;sleep,0.264;sleep,0.04;accelerate,0.2;x,-254;cropright,0;linear,0.066;addx,5;linear,0.066;addx,-5;linear,0.066;addx,5;linear,0.066;addx,-5;linear,0.066;addx,5;linear,0.066;addx,-5);
+				OffCommand=cmd(x,-542;horizalign,left;cropright,0;sleep,0.396;accelerate,0.2;x,160;cropright,1);
+			};
+		};
+	};
+end
+
 return t

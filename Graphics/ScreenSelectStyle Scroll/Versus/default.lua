@@ -29,7 +29,7 @@ local t = Def.ActorFrame{
 	-- Picture
 	Def.ActorFrame{
 		InitCommand=cmd(x,SCREEN_CENTER_X-150;y,SCREEN_CENTER_Y+132);
-		LoadActor("dancer")..{
+		LoadActor(ddrgame.."dancer")..{
 			BeginCommand=cmd(playcommand,"CheckNumPlayers");
 			OnCommand=function(self)
 				if GAMESTATE:GetNumSidesJoined() == 2 then

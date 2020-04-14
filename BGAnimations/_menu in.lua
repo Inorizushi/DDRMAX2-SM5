@@ -3,7 +3,7 @@ return Def.ActorFrame{
 		StartTransitioningCommand=function(s) s:play() end
 	};
 
-	LoadActor("_moveon")..{
+	LoadActor(ddrgame.."moveon")..{
 		InitCommand=function(s)
 			s:xy(SCREEN_CENTER_X,SCREEN_CENTER_Y-10)
 		end,
@@ -12,7 +12,7 @@ return Def.ActorFrame{
 			:zoomy(0.72):sleep(0):diffusealpha(0)
 		end
 	};
-	LoadActor("_2moveon")..{
+	LoadActor(ddrgame.."2moveon")..{
 		InitCommand=function(s)
 			s:xy(SCREEN_CENTER_X,SCREEN_CENTER_Y-10)
 		end,

@@ -1,5 +1,5 @@
 local t = Def.ActorFrame{
-  LoadActor("backer");
+  LoadActor(ddrgame.."backer");
   Def.Sprite{
     SetMessageCommand=function(self, param)
       self:x(-26)
@@ -88,7 +88,7 @@ local t = Def.ActorFrame{
     };
   };
   Def.Sprite{
-    Texture="WheelNotifyIcon icons",
+    Texture=ddrgame.."WheelNotifyIcon icons",
     OnCommand=function(s) s:animate(0):xy(-154,0) end,
     SetMessageCommand=function(s,param)
       s:visible(false)

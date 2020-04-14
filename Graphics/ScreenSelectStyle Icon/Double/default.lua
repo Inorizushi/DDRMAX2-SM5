@@ -3,7 +3,7 @@ local t = Def.ActorFrame{
 	InitCommand=function(s) s:xy(_screen.cx-94,_screen.cy-142):draworder(99) end,
 	GainFocusCommand=function(s) MESSAGEMAN:Broadcast("StyleDouble") end;
 	Def.Sprite{
-		Texture="_item",
+		Texture=ddrgame.."item",
 		OnCommand=function(s) s:addx(-264):sleep(0.3):decelerate(0.35):addx(264) end,
 		GainFocusCommand=function(s) setenv("Style",3) s:glowshift():effectcolor1(color("1,1,1,0")):effectcolor2(color("1,1,1,0.5")):effectperiod(0.5) end,
 		LoseFocusCommand=cmd(stopeffect);
@@ -11,7 +11,7 @@ local t = Def.ActorFrame{
 		DisabledCommand=cmd(diffuse,color("0.2,0.2,0.2,1"));
 		OffCommand=function(s) 
 			if getenv("Style") == 3 then
-				s:Load(THEME:GetPathG("ScreenSelectStyle","Icon/Double/selected"))
+				s:Load(THEME:GetPathG("ScreenSelectStyle","Icon/Double/"..ddrgame.."selected"))
 			end
 			s:stopeffect():sleep(0.65):accelerate(0.166):addx(-70):sleep(0):diffusealpha(0)
 		end,

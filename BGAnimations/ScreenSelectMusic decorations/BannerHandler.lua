@@ -19,7 +19,13 @@ return Def.ActorFrame{
 	},
 	Def.ActorFrame{
 		--Group/Song Fading Banner
-		InitCommand=function(s) s:xy(-8,16) end,
+		InitCommand=function(s) 
+			if ddrgame == "max2_" then
+				s:xy(-8,16)
+			else
+				s:xy(-4,12)
+			end
+		end,
 		Def.Quad{
 			InitCommand=function(s) s:setsize(256,80):diffuse(Color.Black) end,
 		};
@@ -95,5 +101,5 @@ return Def.ActorFrame{
 			end;
 		};
 	},
-	LoadActor("BannerFrame");
+	LoadActor(ddrgame.."BannerFrame");
 };

@@ -1,5 +1,5 @@
 local x = Def.ActorFrame{
-	LoadActor("_moveon")..{ InitCommand=cmd(CenterX;y,SCREEN_CENTER_Y-10); };
+	LoadActor(ddrgame.."moveon")..{ InitCommand=cmd(CenterX;y,SCREEN_CENTER_Y-10); };
 };
 
 x[#x+1] = Def.Actor {
