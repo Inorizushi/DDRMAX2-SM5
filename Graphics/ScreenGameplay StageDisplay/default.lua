@@ -1,4 +1,9 @@
 local StageDisplay = Def.ActorFrame{
+	InitCommand=function(s)
+		if ddrgame == "max_" then
+			s:y(100)
+		end
+	end,
 	BeginCommand=function(s)
 		s:playcommand("Set")
 	end,
@@ -30,7 +35,7 @@ else
 	for s in ivalues(Stage) do
 
 	if s ~= 'Stage_Next' and s ~= 'Stage_Nonstop' and s ~= 'Stage_Oni' and s ~= 'Stage_Endless' then
-		StageDisplay[#StageDisplay+1] = LoadActor( THEME:GetPathG("ScreenGameplay","StageDisplay/"..s) ) .. {
+		StageDisplay[#StageDisplay+1] = LoadActor( THEME:GetPathG("ScreenGameplay","StageDisplay/"..ddrgame.."/"..s) ) .. {
 			SetCommand=function(self, params)
 				local Stage = GAMESTATE:GetCurrentStage();
 				local StageIndex = GAMESTATE:GetCurrentStageIndex();

@@ -1,7 +1,21 @@
 local FL = true
 local audioplaying = {rou=false}
+local roulette;
+
+if ddrgame == "max_" then
+	roulette = THEME:GetPathS("","common/max (loop).ogg")
+else
+	roulette = THEME:GetPathS("","common/max2 (loop).ogg")
+end
 return Def.ActorFrame{
-	InitCommand=function(s) s:xy(_screen.cx-176,_screen.cy-71):diffusealpha(0) end,
+	InitCommand=function(s) 
+		if ddrgame=="max2_" then
+			s:xy(_screen.cx-176,_screen.cy-71)
+		else
+			s:xy(_screen.cx-176,_screen.cy-64)
+		end
+		s:diffusealpha(0) 
+	end,
 	OnCommand=function(s)
 		s:addx(-290):sleep(0.366):sleep(0.116):diffusealpha(1):decelerate(0.283):addx(284):linear(0.05):addx(-4):linear(0.1):addx(10):sleep(0.016):linear(0.033):addx(-3):sleep(0.016):addx(-1):sleep(0.016):linear(0.033):addx(3):sleep(0.05):linear(0.016):addx(1)
 	end,
@@ -9,7 +23,7 @@ return Def.ActorFrame{
 	CurrentSongChangedMessageCommand=function(s) s:queuecommand("Set") end,
 	Def.Sound{
 		Name="RouletteMusic",
-		File=THEME:GetPathS("roulette","music"),
+		File=roulette;
 		PlayCommand=function(s)
 			if not audioplaying.rou then SOUND:StopMusic() s:play() audioplaying.rou = true end
 		end,
@@ -41,6 +55,7 @@ return Def.ActorFrame{
 					FL = false
 				elseif not FL then
 					FL = true
+					self:GetParent():GetParent():GetChild("RouletteMusic"):queuecommand("Stop")
 					if so == "SortOrder_Group" then
 						self:LoadFromSortOrder('SortOrder_Length')
 					else
@@ -50,7 +65,7 @@ return Def.ActorFrame{
 			end;
 		};
 		--Roulette Banner
-		Def.FadingBanner{
+		Def.Sprite{
 			SetCommand=function(self)
 				local song = GAMESTATE:GetCurrentSong()
 				local mw = SCREENMAN:GetTopScreen():GetChild("MusicWheel")
@@ -61,7 +76,7 @@ return Def.ActorFrame{
 				elseif not FL then
 					FL = true
 					if mw:GetSelectedType() == 'WheelItemDataType_Roulette' then
-						self:LoadRoulette()
+						self:Load(THEME:GetPathG("",""..ddrgame.."Banner roulette"))
 						self:visible(true)
 						SOUND:StopMusic()
 						self:GetParent():GetParent():GetChild("RouletteMusic"):playcommand("Play")

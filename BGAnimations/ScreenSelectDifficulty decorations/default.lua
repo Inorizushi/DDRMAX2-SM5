@@ -1,7 +1,7 @@
 local t = LoadFallbackB()
 
-t[#t+1] = LoadActor("../"..lang.."help")..{
-	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-35;);
+t[#t+1] = LoadActor("../"..ddrgame..lang.."help")..{
+	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-35;setstate,1;animate,false);
 	OnCommand=cmd(draworder,199;shadowlength,0;diffuseblink;linear,0.5);
 }
 if ddrgame == "max2_" then

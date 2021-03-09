@@ -9,8 +9,8 @@ for _, pn in pairs(GAMESTATE:GetEnabledPlayers()) do
 end;
 end
 
-t[#t+1] = LoadActor("../"..lang.."help")..{
-	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-35;);
+t[#t+1] = LoadActor("../"..ddrgame..lang.."help")..{
+	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-35;pause;setstate,1);
 	OnCommand=cmd(draworder,199;shadowlength,0;diffuseblink;linear,0.5);
 }
 

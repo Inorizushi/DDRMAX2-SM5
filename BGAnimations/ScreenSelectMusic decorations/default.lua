@@ -1,23 +1,30 @@
 local t = LoadFallbackB();
 
-t[#t+1] = Def.Sprite{
-	Texture="base.png";
-	InitCommand=function(s) s:FullScreen():diffusealpha(0) end,
-};
-
 t[#t+1] = StandardDecorationFromFileOptional("StyleIcon","StyleIcon");
-t[#t+1] = StandardDecorationFromFile("StageDisplay","StageDisplay")
+t[#t+1] = StandardDecorationFromFile("StageDisplay","StageDisplay")..{
+	InitCommand=function(s)
+		if ddrgame=="max_" then
+			s:y(_screen.cy-102)
+		end
+	end,
+};
 t[#t+1] = loadfile( THEME:GetPathB("ScreenSelectMusic","decorations/BannerHandler.lua") )();
-t[#t+1] = StandardDecorationFromFileOptional("BPMDisplay","BPMDisplay")
+t[#t+1] = StandardDecorationFromFileOptional("BPMDisplay","BPMDisplay")..{
+	InitCommand=function(s)
+		if ddrgame=="max_" then
+			s:y(_screen.cy-102)
+		end
+	end,
+}
 t[#t+1] = StandardDecorationFromFileOptional("SortDisplay","SortDisplay")
 
 
 if not GAMESTATE:IsCourseMode() then
 	t[#t+1] = StandardDecorationFromFileOptional("GrooveRadar","GrooveRadar")
 	t[#t+1] = Def.Sprite{
-		Texture="GrooveRadar base",
+		Texture=ddrgame.."GrooveRadar base",
 		InitCommand=function(s)
-			s:xy(SCREEN_CENTER_X-168,SCREEN_CENTER_Y+86)
+			s:xy(SCREEN_CENTER_X-168,RadarY())
 			GAMESTATE:Env()["SelectedEdit"] = false
 		end,
 		OnCommand=function(s) s:zoom(0):rotationz(-360):sleep(0.3):decelerate(0.4):rotationz(0):zoom(1) end,
@@ -93,17 +100,28 @@ if not GAMESTATE:IsCourseMode() then
 		}
 	}
 
-	local GRPos = {
-		{11,-91},
-		{-95,-32},
-		{-95,46},
-		{111,46},
-		{114,-32},
-	}
+	local GRPos
+	if ddrgame == "max_" then
+		GRPos= {
+			{11,-83},
+			{-95,-14},
+			{-76,86},
+			{106,86},
+			{118,-14},
+		};
+	else
+		GRPos = {
+			{11,-91},
+			{-95,-32},
+			{-95,46},
+			{111,46},
+			{114,-32},
+		};
+	end
 
 	for i,v in ipairs(GRPos) do
 		t[#t+1] = Def.Sprite{
-			Texture=THEME:GetPathG("",""..lang.."GrooveRadar labels"),
+			Texture=THEME:GetPathG("",""..ddrgame..lang.."GrooveRadar labels"),
 			OnCommand=function(s)
 				s:animate(0):setstate(i-1)
 				:xy(SCREEN_CENTER_X-180+v[1],SCREEN_CENTER_Y+92+v[2])
@@ -117,10 +135,14 @@ if not GAMESTATE:IsCourseMode() then
 end
 
 t[#t+1] = Def.Sprite {
-Texture=lang.."help 1x3.png",
+Texture="../"..ddrgame..lang.."help 1x4.png",
 	InitCommand=function(self)
 		self:draworder(100):CenterX():y(SCREEN_BOTTOM-35)
-		self:SetAllStateDelays(4.224)
+		self:SetStateProperties({
+			{Frame= 1, Delay= 4.224},
+			{Frame= 2, Delay= 4.224},
+			{Frame= 3, Delay= 4.224},
+		})
 	end,
 	OnCommand=function(self)
 		self:shadowlength(0):addy(999):sleep(0.6):addy(-999):diffuseblink():effectperiod(1.056)

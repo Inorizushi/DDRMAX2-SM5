@@ -1,4 +1,13 @@
-local t = Def.ActorFrame{
+local t = Def.ActorFrame{}
+
+local sectiontext;
+if ddrgame=="max_" then
+  sectiontext="maxsection"
+else
+  sectiontext="section"
+end
+
+return Def.ActorFrame{
   LoadActor("_section part");
   --Section Card
   Def.Sprite{
@@ -31,7 +40,7 @@ local t = Def.ActorFrame{
   };
   --NoSection Text
   Def.BitmapText{
-    Font="section";
+    Font=sectiontext;
     SetMessageCommand=function(self,params)
       self:halign(0):x(-127):maxwidth(200)
       local group = params.Text;
@@ -82,7 +91,3 @@ local t = Def.ActorFrame{
     end,
   };
 };
-
-
-
-return t;

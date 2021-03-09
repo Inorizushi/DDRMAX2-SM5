@@ -17,11 +17,11 @@ return Def.ActorFrame{
 		OnCommand=cmd(sleep,1;linear,0.3;diffusealpha,1);
 	};
 
-	LoadActor("extra")..{
+	LoadActor(ddrgame.."extra")..{
 		InitCommand=cmd(Center;diffusealpha,0;zoom,4;);
 		OnCommand=cmd(sleep,0.8;accelerate,0.4;diffusealpha,0.6;zoom,0.77;linear,0.05;zoom,1;linear,0.05;zoom,1.0;sleep,2;linear,0.3;diffusealpha,0);
 	};
-	LoadActor("extra")..{
+	LoadActor(ddrgame.."extra")..{
 		InitCommand=cmd(Center;diffusealpha,0;zoom,4;);
 		OnCommand=cmd(sleep,0.85;accelerate,0.4;diffusealpha,0.6;zoom,0.77;linear,0.05;zoom,1;linear,0.05;zoom,1.0;sleep,2;linear,0.3;diffusealpha,0);
 	};

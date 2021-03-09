@@ -4,7 +4,7 @@ local xPosPlayer = { [PLAYER_1] = (_screen.cx-280),[PLAYER_2] = (_screen.cx+280)
 
 local spn = ToEnumShortString(pn)
 
-t[#t+1] = LoadActor(THEME:GetPathB("ScreenSelectMusic","decorations/modicons/"..spn.."badge"))..{
+t[#t+1] = LoadActor(THEME:GetPathB("ScreenSelectMusic","decorations/modicons/"..ddrgame..spn.."badge"))..{
 	InitCommand=function(self)
 		self:x(xPosPlayer[pn])
 		:y(_screen.cy-140)

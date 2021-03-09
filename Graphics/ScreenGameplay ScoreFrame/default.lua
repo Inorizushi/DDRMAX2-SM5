@@ -9,5 +9,5 @@ end
 if GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2() then scoreFrame = "extra" end
 
 return Def.ActorFrame{
-	LoadActor(scoreFrame);
+	LoadActor(ddrgame..scoreFrame);
 };

@@ -65,7 +65,7 @@ for i=1,8 do
 end
 
 local clearMessageNormal = Def.ActorFrame{
-	LoadActor("cleared")..{
+	LoadActor(ddrgame.."cleared")..{
 		InitCommand=function(s)
 			s:xy(SCREEN_CENTER_X,SCREEN_CENTER_Y-6)
 		end,

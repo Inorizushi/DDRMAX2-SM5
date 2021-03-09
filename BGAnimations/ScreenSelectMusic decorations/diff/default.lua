@@ -5,9 +5,9 @@ local pn = ...
 local xPosPlayerIcon = { [PLAYER_1] = SCREEN_CENTER_X-260,[PLAYER_2] = SCREEN_CENTER_X-76 }
 t[#t+1] = Def.ActorFrame{
   InitCommand=function(self)
-    self:x(xPosPlayerIcon[pn]):y(SCREEN_CENTER_Y+15)
+    self:x(xPosPlayerIcon[pn]):y(ddrgame=="max_" and _screen.cy+20 or SCREEN_CENTER_Y+15)
   end,
-  LoadActor("_iconframe "..ToEnumShortString(pn))..{
+  LoadActor(ddrgame.."iconframe "..ToEnumShortString(pn))..{
     OnCommand=function(s) s:z(1):cropbottom(1):addy(40):sleep(0.396):linear(0.198):addy(-40):cropbottom(0) end,
     OffCommand=function(s) s:sleep(0.231):linear(0.198):addy(40):cropbottom(1):sleep(0):addy(-40) end,
   };
@@ -51,19 +51,6 @@ t[#t+1] = Def.ActorFrame{
   };
 };
 
---Meter Frames
-local framepos = { [PLAYER_1] = _screen.cy+157, [PLAYER_2] = _screen.cy+195 }
-t[#t+1] = Def.ActorFrame{
-	LoadActor("_frame ".. ToEnumShortString(pn))..{
-		InitCommand=function(self)
-			self:visible( (GAMESTATE:IsPlayerEnabled(pn) or SCREENMAN:GetTopScreen() ~= 'ScreenSelectCourse') and true or false )
-			:xy( _screen.cx-171, framepos[pn] ):valign(pn==PLAYER_2 and 1 or 0)
-		end,
-		OnCommand=function(s) s:cropbottom(1):sleep(0.533):linear(0.184):cropbottom(0) end,
-		OffCommand=function(s) s:sleep(0.183):linear(0.2):cropbottom(1) end,
-	};
-};
-
 -- StepsDisplay
 local function StepsDisplay(pn)
 	local function set(self, player)
@@ -95,7 +82,19 @@ local function StepsDisplay(pn)
 	return sd;
 end
 
-if ShowStandardDecoration("StepsDisplay") then
+if ddrgame=="max2_" then
+	--Meter Frames
+	local framepos = { [PLAYER_1] = _screen.cy+157, [PLAYER_2] = _screen.cy+195 }
+	t[#t+1] = Def.ActorFrame{
+		LoadActor("_frame ".. ToEnumShortString(pn))..{
+			InitCommand=function(self)
+				self:visible( (GAMESTATE:IsPlayerEnabled(pn) or SCREENMAN:GetTopScreen() ~= 'ScreenSelectCourse') and true or false )
+				:xy( _screen.cx-171, framepos[pn] ):valign(pn==PLAYER_2 and 1 or 0)
+			end,
+			OnCommand=function(s) s:cropbottom(1):sleep(0.533):linear(0.184):cropbottom(0) end,
+			OffCommand=function(s) s:sleep(0.183):linear(0.2):cropbottom(1) end,
+		};
+	};
 	local MetricsName = "StepsDisplay" .. PlayerNumberToString(pn);
 	t[#t+1] = StepsDisplay(pn) .. {
 		InitCommand=function(self)

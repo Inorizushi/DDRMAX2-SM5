@@ -109,12 +109,12 @@ t[#t+1] = Def.Sprite{
 
 t[#t+1] = Def.ActorFrame{
 	InitCommand=function(s) s:y(SCREEN_BOTTOM-35) end,
-	LoadActor("../"..lang.."help")..{
-		InitCommand=cmd(x,SCREEN_CENTER_X-158);
+	LoadActor("../"..ddrgame..lang.."help")..{
+		InitCommand=function(s) s:x(SCREEN_CENTER_X-158):setstate(1):animate(false) end,
 		OnCommand=cmd(draworder,199;shadowlength,0;diffuseblink;linear,0.5);
 	};
-	LoadActor(THEME:GetPathG("","ScreenTitleJoin messages/"..lang.."press start"))..{
-		InitCommand=cmd(x,SCREEN_CENTER_X+158);
+	LoadActor("../"..ddrgame..lang.."help")..{
+		InitCommand=function(s) s:x(SCREEN_CENTER_X+158):setstate(0):animate(false) end,
 		OnCommand=cmd(draworder,199;shadowlength,0;diffuseblink;effectperiod,0.3);
 		PlayerJoinedMessageCommand=function(s)
 			s:visible(false)

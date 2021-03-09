@@ -241,3 +241,11 @@ function LateJoin()
 		return false
 	end
 end
+
+function RadarY()
+	if ddrgame=="max_" then
+		return _screen.cy+108
+	else
+		return _screen.cy+86
+	end
+end
