@@ -1,10 +1,8 @@
 local t = Def.ActorFrame{};
 
 t[#t+1] = Def.Sprite{
-	InitCommand=function(self)
-		self:Load(THEME:GetPathB("","ScreenWithMenuElements background/"..ddrgame.."bg"))
-		self:Center()
-	end;
+	Texture=THEME:GetPathB("","ScreenWithMenuElements background/"..ddrgame.."bg"),
+	InitCommand=function(s) s:FullScreen() end;
 };
 
 return t

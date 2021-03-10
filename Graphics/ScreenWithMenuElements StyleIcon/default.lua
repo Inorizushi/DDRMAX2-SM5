@@ -11,7 +11,7 @@ if style then
 	end;
 
 	return LoadActor(THEME:GetPathG("ScreenWithMenuElements","StyleIcon/"..ddrgame..st))..{
-		InitCommand=cmd(animate,false;setstate,state);
+		InitCommand=function(s) s:animate(false):setstate(state) end,
 	};
 else
 	return Def.Actor {};

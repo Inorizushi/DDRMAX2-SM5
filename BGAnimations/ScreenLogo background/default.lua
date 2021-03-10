@@ -5,7 +5,7 @@ local t = Def.ActorFrame{
 		SOUND:PlayAnnouncer("title menu game name")
 	end,
 	LoadActor(ddrgame.."bg")..{ 
-		InitCommand=cmd(Center;);
+		InitCommand=function(s) s:FullScreen() end,
 	};
 	LoadActor(THEME:GetPathG("","ScreenTitleJoin premium"))..{
 		InitCommand=function(s) s:CenterX():y(_screen.cy+95) end,

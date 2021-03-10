@@ -1,7 +1,6 @@
 local gc = Var("GameCommand");
 --------------------------------------
 return Def.ActorFrame{
-  OffCommand=function(s) s:sleep(0.966):sleep(0.45):linear(0.25):addx(640) end,
   Def.Sprite{
     Texture="diff level";
     InitCommand=function(s) s:y(-136) end,
