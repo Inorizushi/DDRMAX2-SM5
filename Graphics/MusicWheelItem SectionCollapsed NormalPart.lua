@@ -1,5 +1,14 @@
 local t = Def.ActorFrame{}
 
+local sectioncolor;
+if ddrgame=="max2_" then
+  sectioncolor="#f7f700"
+elseif ddrgame == "max3_" then
+  sectioncolor="#02fa48"
+else
+  sectioncolor="#FFFFFF"
+end
+
 local sectiontext;
 if ddrgame=="max_" then
   sectiontext="maxsection"
@@ -28,7 +37,7 @@ return Def.ActorFrame{
           if has_value(SectionList, group) then
             self:Load(CheckDir(group));
             self:diffusealpha(1)
-            self:diffuse(color("#ff8400"))
+            self:diffuse(color(sectioncolor))
           else
             self:diffusealpha(0)
           end;
@@ -49,7 +58,7 @@ return Def.ActorFrame{
         if so == "SortOrder_Group" then
           if not has_value(SectionList, group) then
             self:settext(group)
-            self:diffuse(color("#ff8400"))
+            self:diffuse(color(sectioncolor))
           else
             self:diffusealpha(0)
           end;

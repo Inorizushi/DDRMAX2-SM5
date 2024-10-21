@@ -82,14 +82,19 @@ local function StepsDisplay(pn)
 	return sd;
 end
 
-if ddrgame=="max2_" then
+if ddrgame=="max2_" or ddrgame=="max3_" then
 	--Meter Frames
 	local framepos = { [PLAYER_1] = _screen.cy+157, [PLAYER_2] = _screen.cy+195 }
 	t[#t+1] = Def.ActorFrame{
-		LoadActor("_frame ".. ToEnumShortString(pn))..{
+		LoadActor(ddrgame.."frame ".. ToEnumShortString(pn))..{
 			InitCommand=function(self)
 				self:visible( (GAMESTATE:IsPlayerEnabled(pn) or SCREENMAN:GetTopScreen() ~= 'ScreenSelectCourse') and true or false )
-				:xy( _screen.cx-171, framepos[pn] ):valign(pn==PLAYER_2 and 1 or 0)
+				if ddrgame=="max2_" then
+					self:xy( _screen.cx-171, framepos[pn] )
+				else
+					self:xy( pn==PLAYER_1 and _screen.cx-244 or _screen.cx-171, _screen.cy+149 )
+				end
+				self:valign(pn==PLAYER_2 and 1 or 0)
 			end,
 			OnCommand=function(s) s:cropbottom(1):sleep(0.533):linear(0.184):cropbottom(0) end,
 			OffCommand=function(s) s:sleep(0.183):linear(0.2):cropbottom(1) end,
@@ -101,6 +106,9 @@ if ddrgame=="max2_" then
 			self:player(pn);
 			self:name(MetricsName);
 			ActorUtil.LoadAllCommandsAndSetXY(self,Var "LoadingScreen");
+			if ddrgame=="max3_" then
+				self:zoomx(0.92)
+			end
 		end;
 	};
 end

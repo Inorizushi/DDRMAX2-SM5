@@ -1,11 +1,11 @@
 local t = LoadFallbackB();
 
 
-if ddrgame == "max2_" then 
+if ddrgame == "max2_" or ddrgame == "max3_" then 
 t[#t+1] = Def.ActorFrame{
 	InitCommand=cmd(y,SCREEN_TOP+56;draworder,100);
 	Def.Sprite{
-		Texture=THEME:GetPathG("ScreenWithMenuElements","header/max2_/expline");
+		Texture=THEME:GetPathG("ScreenWithMenuElements","header/"..ddrgame.."/expline");
 		InitCommand=function(s) s:setsize(SCREEN_WIDTH,8):x(_screen.cx) end,
 		OnCommand=function(s) s:cropright(1):sleep(0.3):linear(0.4):cropright(0) end,
 		OffCommand=function(s) s:sleep(0.3):linear(0.4):cropright(1) end,
@@ -13,12 +13,13 @@ t[#t+1] = Def.ActorFrame{
 	Def.ActorFrame{
 		InitCommand=function(s) s:xy(SCREEN_RIGHT+3,-3) end,
 		Def.Sprite{
+			Condition= ddrgame ~= "max3_",
 			Texture=THEME:GetPathG("ScreenWithMenuElements","header/max2_/expbacker");
 			InitCommand=function(s) s:halign(1):x(12) end,
 			OnCommand=function(s) s:valign(0):zoomy(0):sleep(0.8):linear(0.2):zoomy(1) end,
 		OffCommand=function(s) s:valign(0):linear(0.2):zoomy(0) end,
 		};
-		LoadActor("max2_"..lang.."explanation")..{
+		LoadActor(ddrgame..lang.."explanation")..{
 			InitCommand=function(s) s:halign(1) end,
 			OnCommand=function(s) s:valign(0):zoomy(0):sleep(0.8):linear(0.2):zoomy(1) end,
 		OffCommand=function(s) s:valign(0):linear(0.2):zoomy(0) end,
@@ -65,7 +66,7 @@ else
 end
 
 t[#t+1] = Def.Sprite{
-	Texture=ddrgame.."joint.png";
+	Texture=ddrgame.."joint";
 	InitCommand=function(s) s:xy(_screen.cx+244,_screen.cy+150):diffusealpha(0) end,
 	OnCommand=function(s)
 		if GAMESTATE:GetPremium() ~= 'Premium_Off' and GAMESTATE:GetCoinMode() == 'CoinMode_Pay' then
@@ -131,14 +132,32 @@ t[#t+1] = Def.ActorFrame{
 		StyleDoubleMessageCommand=function(s) s:queuecommand("Wiggle") end,
 		WiggleCommand=function(s) s:zoomy(1.125):linear(0.1):zoomy(0.914):linear(0.1):zoomy(1.052):linear(0.083):zoomy(0.973):linear(0.066):zoomy(1) end,
 	Def.Sprite{
-		StyleSingleMessageCommand=function(s) s:Load(THEME:GetPathB("","ScreenSelectStyle decorations/"..ddrgame..lang.."single.png")) end,
-		StyleVersusMessageCommand=function(s) s:Load(THEME:GetPathB("","ScreenSelectStyle decorations/"..ddrgame..lang.."versus.png")) end,
-		StyleDoubleMessageCommand=function(s) s:Load(THEME:GetPathB("","ScreenSelectStyle decorations/"..ddrgame..lang.."double.png")) end,
+		StyleSingleMessageCommand=function(s)
+			if ddrgame == "max3_" then
+				s:Load(THEME:GetPathB("","ScreenSelectStyle decorations/max2_"..lang.."single"))
+			else
+				s:Load(THEME:GetPathB("","ScreenSelectStyle decorations/"..ddrgame..lang.."single"))
+			end
+		end,
+		StyleVersusMessageCommand=function(s)
+			if ddrgame == "max3_" then
+				s:Load(THEME:GetPathB("","ScreenSelectStyle decorations/max2_"..lang.."versus"))
+			else
+				s:Load(THEME:GetPathB("","ScreenSelectStyle decorations/"..ddrgame..lang.."versus"))
+			end
+		end,
+		StyleDoubleMessageCommand=function(s)
+			if ddrgame == "max3_" then
+				s:Load(THEME:GetPathB("","ScreenSelectStyle decorations/max2_"..lang.."double"))
+			else
+				s:Load(THEME:GetPathB("","ScreenSelectStyle decorations/"..ddrgame..lang.."double"))
+			end
+		end,
 	};
 	Def.Sprite{
 		InitCommand=cmd(pause;playcommand,"Set");
 		SetCommand=function(s)
-			if ddrgame == "max2_" then
+			if ddrgame == "max2_" or ddrgame == "max3_" then
 				s:Load(THEME:GetPathB("ScreenSelectStyle","decorations/max2_Stage 2x3"))
 				s:xy(-96,-33)
 			else

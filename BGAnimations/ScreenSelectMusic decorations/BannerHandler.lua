@@ -9,7 +9,7 @@ else
 end
 return Def.ActorFrame{
 	InitCommand=function(s) 
-		if ddrgame=="max2_" then
+		if ddrgame=="max2_" or ddrgame == "max3_" then
 			s:xy(_screen.cx-176,_screen.cy-71)
 		else
 			s:xy(_screen.cx-176,_screen.cy-64)
@@ -36,6 +36,8 @@ return Def.ActorFrame{
 		InitCommand=function(s) 
 			if ddrgame == "max2_" then
 				s:xy(-8,16)
+			elseif ddrgame == "max3_" then
+				s:xy(-10,18)
 			else
 				s:xy(-4,12)
 			end

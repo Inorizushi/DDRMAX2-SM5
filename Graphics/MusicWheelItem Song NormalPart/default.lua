@@ -1,3 +1,10 @@
+local font
+if ddrgame == "max_" or ddrgame == "max3_" then
+  font="max_shared2"
+else
+  font="_shared2"
+end
+
 local t = Def.ActorFrame{
   LoadActor(ddrgame.."backer");
   Def.Sprite{
@@ -37,7 +44,7 @@ local t = Def.ActorFrame{
     end;
     Def.BitmapText{
       Name="Title";
-      Font="_shared2";
+      Font=font,
       SetMessageCommand=function(self,param)
         self:x(-127):halign(0)
         local song = param.Song;
@@ -54,7 +61,7 @@ local t = Def.ActorFrame{
     };
     Def.BitmapText{
       Name="Subtitle";
-      Font="_shared2";
+      Font=font,
       SetMessageCommand=function(self,param)
         self:x(-127):halign(0)
         local song = param.Song;
@@ -71,7 +78,7 @@ local t = Def.ActorFrame{
     };
     Def.BitmapText{
       Name="Artist";
-      Font="_shared2";
+      Font=font,
       SetMessageCommand=function(self,param)
         self:x(-127):halign(0)
         local song = param.Song;

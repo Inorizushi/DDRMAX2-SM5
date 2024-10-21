@@ -33,7 +33,7 @@ if ThemePrefs.Get("Game") ~= CurrentMenuMusic then
   end
 end
 
-if GAMESTATE:GetCoinMode() == 'CoinMode_Home' then
+if GAMESTATE:GetCoinMode() == 'CoinMode_Home' and ddrgame ~= "max3_" then
 t[#t+1] = Def.ActorFrame{
 	LoadActor("home_warn")..{
 		InitCommand=cmd(CenterX;y,SCREEN_BOTTOM-50);

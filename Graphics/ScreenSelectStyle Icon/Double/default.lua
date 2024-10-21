@@ -11,7 +11,11 @@ local t = Def.ActorFrame{
 		DisabledCommand=cmd(diffuse,color("0.2,0.2,0.2,1"));
 		OffCommand=function(s) 
 			if getenv("Style") == 3 then
-				s:Load(THEME:GetPathG("ScreenSelectStyle","Icon/Double/"..ddrgame.."selected"))
+				if ddrgame == "max3_" then
+					s:Load(THEME:GetPathG("ScreenSelectStyle","Icon/Double/max2_selected"))
+				else
+					s:Load(THEME:GetPathG("ScreenSelectStyle","Icon/Double/"..ddrgame.."selected"))
+				end
 			end
 			s:stopeffect():sleep(0.65):accelerate(0.166):addx(-70):sleep(0):diffusealpha(0)
 		end,

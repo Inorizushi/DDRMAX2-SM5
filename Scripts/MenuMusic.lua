@@ -4,6 +4,7 @@ do
 		common = {
 			["max2"] = "common/max2 (loop).ogg";
 			["max"] = "common/max (loop).ogg";
+			["max3"] = "common/max3 (loop).mp3";
 		};
 	}
 	--thanks to this code

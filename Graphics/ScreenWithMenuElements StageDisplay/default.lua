@@ -3,10 +3,17 @@ local StageDisplay = Def.ActorFrame{
 	CurrentSongChangedMessageCommand=cmd(finishtweening;playcommand,"Set";);
 };
 
+local sd
+if ddrgame == "max3_" then
+	sd = "max2_"
+else
+	sd = ddrgame
+end
+
 for s in ivalues(Stage) do
 
 if s ~= 'Stage_Next' and s ~= 'Stage_Nonstop' and s ~= 'Stage_Oni' and s ~= 'Stage_Endless' then
-	StageDisplay[#StageDisplay+1] = LoadActor( THEME:GetPathG("ScreenWithMenuElements","StageDisplay/"..ddrgame.."/"..s) ) .. {
+	StageDisplay[#StageDisplay+1] = LoadActor( THEME:GetPathG("ScreenWithMenuElements","StageDisplay/"..sd.."/"..s) ) .. {
 		SetCommand=function(self, params)
 			local Stage = GAMESTATE:GetCurrentStage();
 			local StageIndex = GAMESTATE:GetCurrentStageIndex();

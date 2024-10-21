@@ -8,10 +8,12 @@ local Prefs = {
 	Game =
 	{
 		Default = "max2",
-		Choices = {"DDRMAX", "DDRMAX2"},
-		Values = {"max","max2"}
+		Choices = {"DDRMAX", "DDRMAX2","DDRMAX3"},
+		Values = {"max","max2","max3"}
 	}
 }
+
+ThemePrefs.InitAll(Prefs)
 
 lang = "jp_"
 function ChangeLanguage()
@@ -26,12 +28,12 @@ ddrgame = "max2_"
 function ChangeGame()
 	if ThemePrefs.Get("Game") == "max2" then
 		ddrgame = "max2_"
+	elseif ThemePrefs.Get("Game") == "max3" then
+		ddrgame = "max3_"
 	else
 		ddrgame = "max_"
 	end
 end
-
-ThemePrefs.InitAll(Prefs)
 
 function InitUserPrefs()
 	local Prefs = {

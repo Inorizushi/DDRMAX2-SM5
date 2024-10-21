@@ -12,7 +12,13 @@ local modifierlist = {
 local t = Def.ActorFrame{}
 	for i,v in ipairs(modifierlist.Position) do
 		t[#t+1] = Def.Sprite{
-			Texture=ddrgame.."/default.png",
+			InitCommand=function(s)
+				if ddrgame == "max3_" then
+					s:Load(THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/max2_/default.png"))
+				else
+					s:Load(THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/"..ddrgame.."/default.png"))
+				end
+			end,
 			OnCommand=function(s)
 				s:x(v)
 				for v in ivalues(modifierlist[ i ]) do
@@ -22,11 +28,23 @@ local t = Def.ActorFrame{}
 						end
 						local po = GAMESTATE:GetPlayerState(player):GetPlayerOptions("ModsLevel_Preferred")
 						if i == 2 and (po:Brake() == 1 or po:Wave() == 1) then
-							s:Load( THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/"..ddrgame.."/boost.png") )
+							if ddrgame == "max3_" then
+								s:Load( THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/max2_/boost.png") )
+							else
+								s:Load( THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/"..ddrgame.."/boost.png") )
+							end
 						elseif i == 6 and po:NoHolds() then
-							s:Load( THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/"..ddrgame.."/freeze.png") )
+							if ddrgame == "max3_" then
+								s:Load( THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/max2_/freeze.png") )
+							else
+								s:Load( THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/"..ddrgame.."/freeze.png") )
+							end
 						else
-							s:Load( THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/"..ddrgame.."/"..v..".png") )
+							if ddrgame == "max3_" then
+								s:Load( THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/max2_/"..v..".png") )
+							else
+								s:Load( THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/"..ddrgame.."/"..v..".png") )
+							end
 						end
 					end
 				end
@@ -37,9 +55,17 @@ local t = Def.ActorFrame{}
 					for v in ivalues(modifierlist[ i ]) do
 						if param.index == i then
 							if not (param.ch == "1x") and not (param.ch == "0.5x") then
-								s:Load( THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/"..ddrgame.."/"..param.ch..".png") )
+								if ddrgame == "max3_" then
+									s:Load( THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/max2_/"..param.ch..".png") )
+								else
+									s:Load( THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/"..ddrgame.."/"..param.ch..".png") )
+								end
 							else
-								s:Load( THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/"..ddrgame.."/default.png") )
+								if ddrgame == "max3_" then
+									s:Load(THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/max2_/default.png"))
+								else
+									s:Load(THEME:GetPathB("ScreenSelectMusic","decorations/modicons/Icons/"..ddrgame.."/default.png"))
+								end
 							end
 						end
 					end

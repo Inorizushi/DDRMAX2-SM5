@@ -12,6 +12,11 @@ local StageDisplay = Def.ActorFrame{
 	end,
 };
 
+local gamu = ddrgame;
+if ddrgame == "max3_" then
+	gamu = "max2_"
+end
+
 local IndexToStage = {
 	[0] = "Stage_1st",
 	[1] = "Stage_2nd",
@@ -26,7 +31,7 @@ if GAMESTATE:GetPlayMode() == 'PlayMode_Nonstop' then
 		SetCommand=function(self,params)
 			local curStageStats = STATSMAN:GetCurStageStats()
 			local Stage = curStageStats:GetStageIndex()
-			self:Load(THEME:GetPathG("ScreenGameplay","StageDisplay/"..IndexToStage[Stage]..".png"))
+			self:Load(THEME:GetPathG("ScreenGameplay","StageDisplay/"..gamu.."/"..IndexToStage[Stage]..".png"))
 		end,
 		ChangeCourseSongInMessageCommand=function(s) s:queuecommand("Set") end
 	}
@@ -35,7 +40,7 @@ else
 	for s in ivalues(Stage) do
 
 	if s ~= 'Stage_Next' and s ~= 'Stage_Nonstop' and s ~= 'Stage_Oni' and s ~= 'Stage_Endless' then
-		StageDisplay[#StageDisplay+1] = LoadActor( THEME:GetPathG("ScreenGameplay","StageDisplay/"..ddrgame.."/"..s) ) .. {
+		StageDisplay[#StageDisplay+1] = LoadActor( THEME:GetPathG("ScreenGameplay","StageDisplay/"..gamu.."/"..s) ) .. {
 			SetCommand=function(self, params)
 				local Stage = GAMESTATE:GetCurrentStage();
 				local StageIndex = GAMESTATE:GetCurrentStageIndex();
